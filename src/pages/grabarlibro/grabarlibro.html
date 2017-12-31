@@ -1,0 +1,46 @@
+<!--
+  Generated template for the CrearadministradorPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Crear Libros</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <p *ngIf="submitAttempt" style="color: #ea6153;">Complete los campos.</p>
+  <ion-list>
+    <form [formGroup]="frmlibros" >
+      <ion-item>
+        <ion-label floating>Codigo:</ion-label>
+        <ion-input *ngFor="let cod of codigos" formControlName="codigo" aria-required type="number" value="{{ cod.estado }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Nombre:</ion-label>
+        <ion-input formControlName="nombre" type="text" placeholder="Nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Autor:</ion-label>
+        <ion-input formControlName="autor" type="text" placeholder="Autor"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Ejemplares:</ion-label>
+        <ion-input formControlName="ejemplar" type="text" placeholder="Ejemplar"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Estado:</ion-label>
+        <ion-select formControlName="estado">
+          <ion-option value=1>Habilitado</ion-option>
+          <ion-option value=2>Deshabilitado</ion-option>
+        </ion-select>
+      </ion-item>
+
+    </form>
+
+    <button ion-button (click)="insertarLibro()">Insertar</button>
+  </ion-list>
+</ion-content>

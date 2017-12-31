@@ -1,0 +1,38 @@
+<!--
+  Generated template for the ModificarpagoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Modificar Pago</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <p *ngIf="submitAttempt" style="color: #ea6153;">Complete los campos.</p>
+  <ion-list>
+    <form [formGroup]="frmPago" >
+      <ion-item>
+        <ion-label floating>Codigo:</ion-label>
+        <ion-input formControlName="codigo" aria-required type="number" value="{{ datos.idPago }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Nombre:</ion-label>
+        <ion-input formControlName="nombre" type="text" value="{{ datos.Nombre }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Monto:</ion-label>
+        <ion-input formControlName="monto" type="number" value="{{ datos.Monto }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Moneda:</ion-label>
+        <ion-input formControlName="tipo" type="text" value="{{ datos.TipoMoneda }}"></ion-input>
+      </ion-item>
+    </form>
+
+    <button ion-button (click)="modificarPago()">Modificar</button>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,48 @@
+<!--
+  Generated template for the ModificaradministradorPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Modificar Libros</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p *ngIf="submitAttempt" style="color: #ea6153;">Complete los campos.</p>
+  <ion-list>
+    <form [formGroup]="frmlibros">
+      <ion-item>
+        <ion-label floating>Codigo:</ion-label>
+        <ion-input formControlName="codigo" aria-required type="number" value="{{ datos.idLibro }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Nombre:</ion-label>
+        <ion-input formControlName="nombre" type="text" value="{{ datos.Nombre }}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Autor:</ion-label>
+        <ion-input formControlName="autor" aria-required type="text" value="{{ datos.Autor }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Ejemplar:</ion-label>
+        <ion-input formControlName="ejemplar" type="text" value="{{ datos.Ejemplares }}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Estado:</ion-label>
+        <ion-select formControlName="estado">
+          <ion-option *ngFor="let est of estados" [selected]=est.Estado value="{{ est.id }}">{{ est.nombre }}</ion-option>
+        </ion-select>
+
+      </ion-item>
+
+
+
+    </form>
+
+    <button ion-button (click)="modificarLibro()">Modificar</button>
+  </ion-list>
+</ion-content>

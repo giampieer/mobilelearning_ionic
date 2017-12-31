@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Administradores
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cargarAdministrador()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="insertarAdministrador()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let administrador of administradores">
+      <ion-item>
+        <h2>Codigo: {{ administrador.idAdministrador }}</h2>
+        <p>Nombres: {{ administrador.Apellido }}, {{ administrador.Nombre }}</p>
+        <p *ngIf=" administrador.Sexo == 1">Sexo: Masculino </p>
+        <p *ngIf=" administrador.Sexo == 2">Sexo: Femenino </p>
+        <p> Edad: {{ administrador.Edad }} </p>
+        <p> Correo: {{ administrador.Correo }} </p>
+        <p> Usuario: {{ administrador.Usuario }} </p>
+        <p> Clave: {{ administrador.Clave }} </p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="actualizarPage(administrador)">
+          <ion-icon name="open"></ion-icon>
+          Actualizar
+        </button>
+        <button ion-button color="danger" (click)="eliminarAdministrador(administrador.idAdministrador)">
+          <ion-icon name="trash"></ion-icon>
+          Eliminar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

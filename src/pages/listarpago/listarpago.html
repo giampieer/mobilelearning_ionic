@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Pagos
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cargarPago()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="insertarPago()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let pago of pagos">
+      <ion-item>
+        <h2>Codigo: {{ pago.idPago }}</h2>
+        <p>Actividad: {{ pago.Nombre }}</p>
+        <p>Monto: {{ pago.Monto }}</p>
+        <p>Monto: {{ pago.TipoMoneda }}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="actualizarPage(pago)">
+          <ion-icon name="open"></ion-icon>
+          Actualizar
+        </button>
+        <button ion-button color="danger" (click)="eliminarPago(pago.idPago)">
+          <ion-icon name="trash"></ion-icon>
+          Eliminar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,42 @@
+z<ion-header>
+  <ion-navbar>
+    <ion-title>
+      PROFESORES
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cargarProfesor()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="insertarProfesor()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let profesor of profesores">
+      <ion-item>
+        <h2>Codigo: {{ profesor.idProfesor}}</h2>
+        <p>Nombres: {{ profesor.Apellido }}, {{ profesor.Nombre }}</p>
+        <p *ngIf=" profesor.Sexo == 1">Sexo: Masculino </p>
+        <p *ngIf=" profesor.Sexo == 2">Sexo: Femenino </p>
+        <p> Edad: {{ profesor.Edad }} </p>
+        <p> Correo: {{ profesor.Correo }} </p>
+        <p> Usuario: {{ profesor.Usuario }} </p>
+        <p> Clave: {{ profesor.Clave }} </p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="actualizarProfesor(profesor)">
+          <ion-icon name="open"></ion-icon>
+          Actualizar
+        </button>
+        <button ion-button color="danger" (click)="eliminarProfesor(profesor.idProfesor)">
+          <ion-icon name="trash"></ion-icon>
+          Eliminar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

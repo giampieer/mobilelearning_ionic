@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Matriculas
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cargarMatricula()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="insertarMatricula()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let matricula of matriculas">
+      <ion-item>
+        <h2>Codigo: {{ matricula.idMatricula }}</h2>
+        <p>Ciclo: {{ matricula.Ciclo }}</p>
+        <p>Seccion: {{ matricula.Seccion }}</p>
+        <p>Administrador: {{ matricula.ApellidoAdmin }}, {{ matricula.NombreAdmin }}</p>
+        <p>Alumno: {{ matricula.ApellidoAlum }}, {{ matricula.NombreAlum }}</p>
+        <p>Pago: {{ matricula.NombrePago }}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="actualizarPage(matricula)">
+          <ion-icon name="open"></ion-icon>
+          Actualizar
+        </button>
+        <button ion-button color="danger" (click)="eliminarMatricula(matricula.idMatricula)">
+          <ion-icon name="trash"></ion-icon>
+          Eliminar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

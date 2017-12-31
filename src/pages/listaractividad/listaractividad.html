@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Actividades
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cargarActividad()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="insertarActividad()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let actividad of actividades">
+      <ion-item>
+        <h2>Codigo: {{ actividad.idActividad }}</h2>
+        <p>Actividad: {{ actividad.Nombre }}</p>
+        <p *ngIf=" actividad.Estado == 1">Estado: HABILITADO</p>
+        <p *ngIf=" actividad.Estado == 2">Estado: DESHABILITADO</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="actualizarPage(actividad)">
+          <ion-icon name="open"></ion-icon>
+          Actualizar
+        </button>
+        <button ion-button color="danger" (click)="eliminarActividad(actividad.idActividad)">
+          <ion-icon name="trash"></ion-icon>
+          Eliminar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Libros
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cargarLibros()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="insertarLibro()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let libro of libros">
+      <ion-item>
+        <h2>Codigo: {{ libro.idLibro }}</h2>
+        <p> Nombre: {{ libro.Nombre }} </p>
+        <p> Autor: {{ libro.Autor }} </p>
+
+        <p>Ejemplares: {{ libro.Ejemplares }}</p>
+        <p *ngIf=" libro.Estado == 1">Estado: Habilitado </p>
+        <p *ngIf=" libro.Estado == 2">Estado: Deshabiltado</p>
+
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="actualizarPage(libro)">
+          <ion-icon name="open"></ion-icon>
+          Actualizar
+        </button>
+        <button ion-button color="danger" (click)="eliminarLibro(libro.idLibro)">
+          <ion-icon name="trash"></ion-icon>
+          Eliminar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

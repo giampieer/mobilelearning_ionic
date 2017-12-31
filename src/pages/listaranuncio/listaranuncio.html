@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Anuncios
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cargarAnuncios(1)">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="insertarAnuncio()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let anuncio of anuncios">
+      <ion-item>
+        <h2>Codigo: {{ anuncio.idAnuncio }}</h2>
+        <p>Nombre Anuncio: {{ anuncio.Nombre }}</p>
+        <p>Horario: {{ anuncio.idHorario }}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="actualizarPage(anuncio)">
+          <ion-icon name="open"></ion-icon>
+          Actualizar
+        </button>
+        <button ion-button color="danger" (click)="eliminarAnuncio(anuncio.idAnuncio)">
+          <ion-icon name="trash"></ion-icon>
+          Eliminar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
